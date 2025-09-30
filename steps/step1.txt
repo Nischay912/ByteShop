@@ -1,0 +1,15 @@
+We first create a package.json file in root directory outside both frontend and backend folder , so that : we can use it for both folders frontend and backend can have it in common , to make it easy to deploy both frontend and backend from a single place there.
+
+So, be in root in the terminal and type : "npm init -y" to get the package.json file in the root directory there.
+
+So, we will be installing packages : npm i express dotenv mongoose jsonwebtoken stripe cloudinary cookie-parser bcryptjs ioredis and then in devDependencies install npm i nodemon -D
+
+Next since we will have a server.js file in backend , so in package.json file : "main": "index.js", : change this line to : "main": "backend/server.js",
+
+Also , lets create scripts to be used in terminal, so in the "scripts" of the package.json file there : so one for development lets say : "dev":"nodemon backend/server.js", ; and then for production : "start":"node backend/server.js"
+
+Its because we use nodemon in development to make the changes made in file immediately in the server ; on making any changes in code , it restarts the server immediately to see the results faster during development , but after deployment in production , we wont be making changes to code regularly , so no need of nodemon there , can run directly using "node" like mentioned above there.
+
+Also make a line : "type":"module", in package.json file there ; so that we can use "import ....." syntax instead of "const express = require ....."
+
+Now see the next steps in server.js file of backend folder now there.
