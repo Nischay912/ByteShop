@@ -1,0 +1,3 @@
+We now can go on POSTMAN > go on top navbar , right click > close all the tabs > create new workspace > next > name it > only me > create > "+" to create a new collection > we will be testing our endpoints from here now if they are working correctly or not > name the collection lets say as "users" > "..." clicked > add request > name the request as lets say "signup" first .
+
+See the next steps in auth.route.js file now there.

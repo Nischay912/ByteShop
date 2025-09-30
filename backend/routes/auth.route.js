@@ -14,10 +14,14 @@ const router = express.Router();
 
 // step11: now see the next steps in the auth.controller.js file now there , from which we will be importing the content for each of the below routes here below.
 
-router.get("/signup", signup)
+// step42: changed all requests from "get" to "post" as get was for testing purpose only initially , but now we will be using it for real requests there in which we will be sending the data to the server there , and not getting the data from the server there ; so we know for sending data to the server , we will be using "post" there and not "get".
+
+// step43: see the next steps in auth.controller.js file now there.
+
+router.post("/signup", signup)
 
 // step10: similarly we can do for login and logout routes there.
-router.get("/login", login)
-router.get("/logout", logout)
+router.post("/login", login)
+router.post("/logout", logout)
 
 export default router
