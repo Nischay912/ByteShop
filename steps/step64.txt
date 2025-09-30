@@ -1,0 +1,9 @@
+Now, we can create new user in POSTMAN and now see the cookie created with tokens in POSTMAN there ; also token will be there in REDIS database there.
+
+Can also see cookies in POSTMAN below SEND button there and also on bottom box too.
+
+Now this is secure because : if our account's access token gets stolen , they won't be able to access your account after 15m , so they will have to do all things in 15m only , which makes it very secure ; so it expires after 15m.
+
+So, its very important to constantly expire the access token and renew them with the refresh token ; which we will be doing in furthere way more ahead steps in the project.
+
+See the next steps in step65.txt file now there.

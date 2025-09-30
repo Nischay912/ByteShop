@@ -1,0 +1,7 @@
+Now lets setup the database , so for that lets go on mongodb atlas website > click on the top left down-arrow there > create a project there > project name > now we can do create project next and done > create cluster > choose FREE > create deployment > then : copy the username password > creat databse user > choose connection method > drivers > copy connection string and paste in env file as environment variable there.
+
+If you keep as : mongodb+srv://nischaykumardev_db_user:0nJH4eLI7Oe9DWyR@cluster0.mudixcs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0 ; then database name will be set by default to "test" so lets set it to "byteshopDb" by entering it after ".net/" above there : mongodb+srv://nischaykumardev_db_user:0nJH4eLI7Oe9DWyR@cluster0.mudixcs.mongodb.net/byteshopDb?retryWrites=true&w=majority&appName=Cluster0
+
+Then go in > network access > add ip address > allow access anywhere > confirm
+
+See the next steps now in db.js file now there.

@@ -1,0 +1,13 @@
+We had a signup button which user clicks and then we get a request at "api/auth/signup" endpoint > we save the user then to the database ; then we need to create tokens i.e. "access token" and "refresh token" ; access tokens expires in 15m , whereas refresh tokens expires in 7d ; and then we will save both these tokens in "req.cokkie" , so that we can check at anytime from the cookie if user is authenticated or not ; as cookie will contain token for logged in authenticated user only ; others can't access the website if theit jwt token not in cookie.
+
+We will save the "refresh token" to the "redis database" , so that : we can have superfast access to that token from there ; and for redis token we will be using UPSTASH website.
+
+Go on > upstash.com > login using github > create database > we can create only one free database as free plan here > so lets create the database here : enter details and then choose free plan > create > click on "javascript" > choose "ioredis" one > copy the code there and paste in redis.js file there.
+
+So, redis is a "key-value" store ; which is like a giant JSON where we have different data-structures like strings , lists, hashes , sorted-sets , sets , etc.
+
+We can open new terminal window clicking on + in terminal > type : "node .\backend\lib\redis.js" and run it > go on upstash database we had > in data browser tab there , we will be able to see key as "foo" that we have in the basic syntax we copied in redis.js and its value as "bar" that was in syntax there too.
+
+We will be using this for : "refresh token" with : "user_id" as key and value of it there too. 
+
+See the next steps in auth.controller.js file now there.

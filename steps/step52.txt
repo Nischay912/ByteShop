@@ -1,0 +1,5 @@
+Now we can go in POSTMAN and send a post request at : http://localhost:5000/api/auth/signup > with body > raw > JSON > enter name email and all and send to get success response back , can even see a error message in response if we dont enter email or skip entering password and all due to the catch block we had used in the auth.controller.js file earlier there.
+
+After that we can see the database for the user document there too ; we can manually make a user there with role "admin" too ; as we are owner of the database : lol 😆
+
+See the next steps in step53.txt file now there.
