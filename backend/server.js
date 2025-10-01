@@ -3,6 +3,7 @@ import express from "express";
 import authRoutes from "./routes/auth.route.js";
 import productRoutes from "./routes/product.route.js";
 import cartRoutes from "./routes/cart.route.js"
+import couponRoutes from "./routes/coupon.route.js"
 import cookieParser from "cookie-parser";
 
 // step4: import the dotenv package and then call its config method in order to be able to use the variables of the .env file there.
@@ -34,6 +35,11 @@ app.use("/api/products", productRoutes)
 
 // step202: now lets create a route for the carts here below ; so that user can add products to the card , update its quantity , remove from cart, etc.
 app.use("/api/cart", cartRoutes)
+
+// step245: now lets create a route for coupons here below ; to verify if user is valid for a coupon or not.
+
+// step246: see the next steps in coupon.model.js file now there.
+app.use("/api/coupons", couponRoutes)
 
 app.listen(PORT, () => {
     console.log("server is running on http://localhost:" + PORT);
