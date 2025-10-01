@@ -1,6 +1,7 @@
 // step2: lets create a basic express app here below ; and we can run it using "npm run dev" as we had included the script under "dev" in package.json file there.
 import express from "express";
 import authRoutes from "./routes/auth.route.js";
+import productRoutes from "./routes/product.route.js";
 import cookieParser from "cookie-parser";
 
 // step4: import the dotenv package and then call its config method in order to be able to use the variables of the .env file there.
@@ -26,6 +27,9 @@ app.use(cookieParser());
 
 // step6: see the next steps now in auth.route.js file now there.
 app.use("/api/auth", authRoutes)
+
+// step99: now lets build the product routes here below.
+app.use("/api/products", productRoutes)
 
 app.listen(PORT, () => {
     console.log("server is running on http://localhost:" + PORT);

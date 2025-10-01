@@ -1,0 +1,7 @@
+We can now create a new collection for Products there in postman using the "+" there : and then lets name it products and under it make a new request to get all the products there.
+
+Now if we send a request to that endpoint on POSTMAN to get all products : we get : "message": "User not authenticated - No access token provided" -> because no user is logged in > then if we log in with a customer role user and send request again -> we get : "message": "Access denied - Not an admin" -> becaus eits not a customer.
+
+So, we can see that since we had "router.get("/", protectRoute, adminRoute, getAllProducts)" -> so firts protectRoute middleware runs , and if user is logged in , then checks via adminRoute if the user is an admin or not ; and finally if its admin we will be able to see all the products in the response there.
+
+See the next steps in product.route.js file now there.

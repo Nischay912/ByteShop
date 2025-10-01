@@ -1,0 +1,3 @@
+We will be having images in products too , so : Go on cloudinary > home > dashboard > get the cloud name and api keys and save in .env folder there now.
+
+See the next steps in cloudinary.js file now there.
