@@ -1,0 +1,3 @@
+Now we can test the login functionality in POSTMAN at "/api/auth/login" endpoint and send in body , the email and password as raw JSON object to see the success message & also we can see the cookies there in postman as well as the redis database on upstash.com for the token of logged in user there.
+
+See the next steps in step86.txt file now there.

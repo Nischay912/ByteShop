@@ -1,0 +1,5 @@
+Now we can test this logout functionality on POSTMAN by sending a post request to "/api/auth/logout" endpoint and see the success message there.
+
+And then on upstash website also the cookie will have been gone now.
+
+See the next steps in step78.txt file now there.

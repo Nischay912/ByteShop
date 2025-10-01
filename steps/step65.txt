@@ -1,0 +1,3 @@
+When user clicks on logout button , they will be redirected to /api/auth/logout endpoint ; so then we will want to delete the refresh token for that user from REDIS , as he has now logged out ; and then we also will clear the tokens from the cookie as well.
+
+See the next steps in auth.controller.js file now there.

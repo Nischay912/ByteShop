@@ -1,6 +1,7 @@
 // step2: lets create a basic express app here below ; and we can run it using "npm run dev" as we had included the script under "dev" in package.json file there.
 import express from "express";
 import authRoutes from "./routes/auth.route.js";
+import cookieParser from "cookie-parser";
 
 // step4: import the dotenv package and then call its config method in order to be able to use the variables of the .env file there.
 import dotenv from "dotenv";
@@ -15,6 +16,11 @@ const PORT = process.env.PORT || 5000;
 
 // step47: see the next steps now in auth.controller.js file now there.
 app.use(express.json());
+
+// step68: so we need to use the cookie parser package , so that we can access the contents of cookies in the form of req.cookies there.
+
+// step69: see the next steps in auth.controller.js file now there.
+app.use(cookieParser());
 
 // step5: now lets say if user visits "/api/auth" , then we will mount the authRoutes there.
 

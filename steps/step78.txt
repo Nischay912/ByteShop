@@ -1,0 +1,3 @@
+Now for login functionality , when we click on login , we go at "/api/auth/login" endpoint and then we compare password and validate the credentials ; and if valid , we again create access and refresh tokens fro 15m and 7d respectively and set them in cookies as well ; and save the user to REDIS as that user was authenticated.
+
+See the next steps in auth.controller.js file now there.
