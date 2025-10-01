@@ -1,6 +1,6 @@
 // step7: lets now make our router here below.
 import express from "express"
-import { login, logout, signup } from "../controllers/auth.controller.js";
+import { login, logout, signup, refreshToken} from "../controllers/auth.controller.js";
 
 const router = express.Router();
 
@@ -23,5 +23,10 @@ router.post("/signup", signup)
 // step10: similarly we can do for login and logout routes there.
 router.post("/login", login)
 router.post("/logout", logout)
+
+// step87: now lets create an endpoint for refreshing the token here below ; which will call the method named "refreshToken" in auth.controller.js file there.
+
+// step88: see the next steps in auth.controller.js file now there.
+router.post("/refresh-token" , refreshToken)
 
 export default router

@@ -1,0 +1,5 @@
+We now can go on POSTMAN and make a request to the /api/auth/refresh-token endpoint and can get the success message there ; we can compare the last access token value and new access token value after sending request from "cookies" below the send button there in POSTMAN ; to veriify that yes the access token got refreshed successfully there.
+
+We can also see in REDIS , that it has a timer there in days and seconds under data browser section where our token is there ; showing the time left for expiration of our refresh token there ; hence its a very convienient website to use thus there.
+
+See the next steps in server.js file now there.
