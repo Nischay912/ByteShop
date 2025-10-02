@@ -5,6 +5,7 @@ import productRoutes from "./routes/product.route.js";
 import cartRoutes from "./routes/cart.route.js"
 import couponRoutes from "./routes/coupon.route.js"
 import paymentRoutes from "./routes/payment.route.js"
+import analyticsRoutes from "./routes/analytics.route.js"
 import cookieParser from "cookie-parser";
 
 // step4: import the dotenv package and then call its config method in order to be able to use the variables of the .env file there.
@@ -46,6 +47,11 @@ app.use("/api/coupons", couponRoutes)
 
 // step283: see the next steps in payment.route.js file now there.
 app.use("/api/payments", paymentRoutes)
+
+// step345: now lets make a route for the analytics graph to be shown to the admin here below.
+
+// step346: see the next steps in analytics.route.js file now there.
+app.use("/api/analytics", analyticsRoutes)
 
 app.listen(PORT, () => {
     console.log("server is running on http://localhost:" + PORT);

@@ -211,3 +211,17 @@ export const refreshToken = async (req,res) => {
         res.status(500).json({message:"Something went wrong : " + error.message})
     }
 }
+
+// step400: now lets create the function to get the profile of the user now here below.]
+export const getProfile = async (req,res) => {
+    try{
+        // step401: now lets return the req.user as response here below; because we have a protectRoute middleware running before it in the auth.route.js file there ; so the protectRoute function , there we saw that it stores the current user's details in the req.user before calling the next() function written after it ; so indirectly we will be having the user's details in req.user now.
+
+        // step402: see the next steps in step403.txt file now there.
+        res.json(req.user);
+    }
+    catch(error){
+        console.log("Error getting profile : " , error.message);
+        res.status(500).json({message:"Something went wrong : " + error.message})
+    }
+}
