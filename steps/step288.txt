@@ -1,0 +1,5 @@
+Now , lets go on stripe.com to start with initializing the platform to do payments there > go in developers section > get the secret key and copy paste it in .env file there.
+
+Now lets initialize the stripe in its own seperate file there ; like we have initialized each service seperately there ; so lets also initialize STRIPE in a new file.
+
+See next steps in stripe.js file there now.
