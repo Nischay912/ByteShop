@@ -1,0 +1,32 @@
+Now lets go in terminal > "cls" to clear the current terminal > then change directory to frontend using "cd .\frontend\ > can do this by shortcut : type cd > then keep tapping tab space button till you get the required directory name there.
+
+Now , create a react application using VITE > npm create vite@latest . > we have put "." at end so that it creates the files of it inside the current folder i.e. the frontend folder here which we have as the current directory for now here.
+
+Now select > React > Javascript > enter
+
+Now do > npm i > to get the dependencies there i.e to get the node modules downloaded there.
+
+Now, install tailwind from documentation there : use (3.4.17) to match with the course we are doing here > npm install -D tailwindcss postcss autoprefixer > then : npx tailwindcss init -p ; then > copy the content given there on documentation in the tailwind.config.js file.
+
+Put the @tailwind and all those things then given there in index.css file there now.
+
+Delete assets folder for now as we dont need it ; delete the App.css file too and then change and delete the App.jsx file's content too delete there and set to default boilerplate -
+
+function App() {
+
+  return (
+    <div className = 'text-red-500'>
+      Hello World
+    </div>
+  )
+}
+
+export default App
+
+Now , ensure you are in cd frontend and do : npm run dev
+
+Now we will install the packages in the cd frontend , so just kill all the temrinals and just do : cd frontend > npm i axios @stripe/stripe-js framer-motion lucide-react react-confetti react-hot-toast react-router-dom recharts zustand
+
+Then in main.jsx : under StrictMode , put tags : <BrowserRouter> and wrap our application with it and import it from react-router-dom ; its used to have different pages in our react application, in order to do navigation and routing in our application there.
+
+See the next steps in App.jsx file now there.
