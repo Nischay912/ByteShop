@@ -1,0 +1,5 @@
+Now lets try to implement what we did login and logout and all ; and once we login , we can see cookies in inspect > application ; as well as on the upstash.com database there too , once we log-in there , like we had set it up earlier too there.
+
+And once we logout, it will be gone from the upstash.com redis database too from there too.
+
+See the next steps in the HomePage.jsx file now there.

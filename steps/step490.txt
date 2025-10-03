@@ -1,0 +1,3 @@
+Now, lets make a stores folder for Zustand Store , where we will be having all the states to be used at a single global place there ; so that the states can be maa=naged from a single place there , instead of having same states again and again in multiple .jsx files there.
+
+See the next steps in useUserStore.js file there , where we will be hvaing all states needed for / related to the users there.

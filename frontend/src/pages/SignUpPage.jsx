@@ -4,10 +4,21 @@ import { UserPlus, Mail, Lock, User, ArrowRight, Loader } from 'lucide-react'
 import { Link } from 'react-router-dom'
 // step441: we will be using framer motion too for the animations here below.
 import {motion} from 'framer-motion'
+import { useUserStore } from '../stores/useUserStore.js'
 
 const SignUpPage = () => {
   // step442: we will be having many states thus here ; lets have the loading state for now hardcode to false , but will later take it from backend APIs.
-  const loading = false;
+
+  // step522: same as sone in LoginPage.jsx , here also lets comment out the below line and get the loading state from useUserStore.js file thus here below.
+
+  // const loading = false;
+
+  // step507: lets get the needed signup functions from the useUserStore here below.
+
+  // step523: lets now get the loading state from useUserStore.js file thus here below , which will be used to decide when to show the loader and when not thus here below.
+
+  // step524: see the next steps in step525.txt file now there.
+  const { signup, loading } = useUserStore();
 
   // step443: we will also be having state for the formdata for the form user submits when signing in.
   const [formData, setFormData] = useState({
@@ -22,7 +33,13 @@ const SignUpPage = () => {
 
     // step445: we do not want the page to reload on form submission , so we will use preventDefault here.
     e.preventDefault();
-    console.log(formData); //for debugging purposes
+    // console.log(formData); //for debugging purposes
+
+    // step508: now lets call the signup function from useUserStore here below.
+
+    // step509: see the next steps in step510.txt file now there.
+    signup(formData);
+
   }
 
   return (

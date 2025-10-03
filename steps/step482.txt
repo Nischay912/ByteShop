@@ -1,0 +1,108 @@
+Now we will be using axios instead of fetch in our project because its more convenient to use and implement ; reasons are here below -
+
+Read them and see the next steps in lib/axios.js file now there.
+
+1. Automatic JSON Handling
+
+Fetch: You need to manually call .json() on the response:
+
+fetch('/api/data')
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+
+Axios: Automatically parses JSON, so you get data directly:
+
+axios.get('/api/data')
+  .then(res => console.log(res.data));
+
+
+- Less boilerplate, cleaner code.
+
+-----------------------------------------------------------------------------
+
+2. Better Error Handling
+
+Fetch: Only rejects on network errors, not HTTP errors like 404 or 500. You need extra checks:
+
+fetch('/api/data')
+  .then(res => {
+    if (!res.ok) throw new Error('HTTP error ' + res.status);
+    return res.json();
+  });
+
+
+Axios: Rejects promise automatically for HTTP errors:
+
+axios.get('/api/data')
+  .catch(err => console.error(err));
+
+
+- Easier and safer error handling.
+
+-----------------------------------------------------------------------------
+
+3. Request & Response Interceptors
+
+Axios allows you to intercept requests or responses before they are handled. Useful for:
+
+Adding auth tokens automatically
+
+Logging requests/responses
+
+Global error handling
+
+axios.interceptors.request.use(config => {
+  config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+-----------------------------------------------------------------------------
+
+4. Timeouts
+
+Axios lets you set a timeout easily:
+
+axios.get('/api/data', { timeout: 5000 }) // 5 seconds
+  .catch(err => console.error('Request timed out'));
+
+
+Fetch doesn’t have built-in timeout; you need extra code with AbortController.
+
+-----------------------------------------------------------------------------
+
+5. Supports Older Browsers
+
+Axios works on older browsers without polyfills, while fetch may need polyfills for IE.
+
+-----------------------------------------------------------------------------
+
+6. Convenient Syntax
+
+Axios has shorthand methods for GET, POST, PUT, DELETE, etc.
+
+It automatically transforms request data for JSON and application/x-www-form-urlencoded.
+
+axios.post('/api/data', { name: 'Nischay' });
+
+
+vs Fetch:
+
+fetch('/api/data', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'Nischay' })
+});
+
+
+- Axios is more concise.
+
+-----------------------------------------------------------------------------
+
+7. Handling Cancel Requests
+
+Axios supports request cancellation easily using CancelToken.
+
+Fetch requires AbortController (a bit more setup).
+
+In short: Axios saves time, reduces boilerplate, has better error handling, supports interceptors, timeouts, and older browsers—making it more convenient and production-ready than fetch.

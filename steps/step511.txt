@@ -1,0 +1,9 @@
+To see the toasts , you need to put <Toaster /> at end in the App.jsx file below <Routes /> ke niche ka </div> tag there > now toasts will be working.
+
+Now in temrinal click on + and in one do : cd frontend > npm run dev ; in other just do : np run dev for backend to run parallely too there.
+
+SO we can test the toasts by going on website and checking the signup functionality now there.
+
+Now we can do signup and see "user already exists" if we enter already existing mail id , else new user will be created on database mongodb.com too there now.
+
+See the next steps now in LoginPage.jsx file now there.

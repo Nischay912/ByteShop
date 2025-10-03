@@ -33,6 +33,6 @@ router.post("/refresh-token" , refreshToken)
 // step398: now lets create a route to get the profile of the current user here below ; since only logged in users can get their profile there , so we need to add middlewares here below like done earlier too.
 
 // step399: see the next steps in auth.controller.js file now there.
-router.get("/", protectRoute, getProfile)
+router.get("/profile", protectRoute, getProfile)
 
 export default router

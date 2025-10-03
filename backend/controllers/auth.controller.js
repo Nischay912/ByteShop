@@ -92,7 +92,7 @@ export const signup = async (req,res) => {
         // step51: see the next steps in step52.txt file now there.
 
         // SENDING ONLY SOME THINGS IN RESPONSE AS ITS NOT WISE TO SEND ALL THE DATA OF USER IN RESPONSE AS IT MAY LEAD TO SECURITY ISSUES LIKE PASSWORD ETC.
-        res.status(201).json({_id:user._id, name:user.name, email:user.email, role:user.role, message:"User created successfully"})
+        res.status(201).json({_id:user._id, name:user.name, email:user.email, role:user.role, message:"Signed up successfully"})
 
         // res.send("signup route called")
     }
@@ -120,7 +120,7 @@ export const login = async (req,res) => {
             // step83: send a success response back as a response to the user here below.
 
             // step84: see the next steps now in step85.txt file now there.
-            res.status(200).json({_id:user._id, name:user.name, email:user.email, role:user.role, message:"User logged in successfully"})
+            res.status(200).json({_id:user._id, name:user.name, email:user.email, role:user.role, message:"Logged in successfully"})
         }
         else{
             res.status(401).json({message:"Invalid email or password"})
@@ -160,7 +160,7 @@ export const logout = async (req,res) => {
         // step75: finally send a response with success message to indicate that user has logged out successfully.
 
         // step76: see the next steps in step77.txt file now there.
-        res.status(200).json({message:"User logged out successfully"})
+        res.status(200).json({message:"Logged out successfully"})
     } 
     catch (error) {
         console.log("Error logging out : " , error.message);

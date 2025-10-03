@@ -1,10 +1,32 @@
-import { Route, Routes } from 'react-router-dom' 
+import { Route, Routes, Navigate } from 'react-router-dom' 
 import HomePage from './pages/HomePage'
 import SignUpPage from './pages/SignUpPage'
 import LoginPage from './pages/LoginPage'
 import Navbar from './components/Navbar'
+import { Toaster } from 'react-hot-toast'
+import { useUserStore } from './stores/useUserStore.js'
+import { useEffect } from 'react'
+import LoadingSpinner from './components/LoadingSpinner.jsx'
 
 function App() {
+
+  // step526: lets get the user state from useUserStore.js file here below.
+  const { user, checkAuth, checkingAuth } = useUserStore();
+
+  // step536: now as soon as user visits the app OR refresh the page, we will run the checkAuth method thus here below , using useEffect hook.
+
+  // step537: we see the loginPage or signUp page for a split second if we are logged in , but type in url : localhost:5173/login or localhost:5173/signup , so we will have a loading spinner there instead of that split second view of the loginPage or signUp page there.
+
+  // step538: see the next steps in LoadingSpinner.jsx file now there.
+  useEffect(() => {
+    checkAuth();
+  },[checkAuth])
+
+  // step542: if we are checking for user authentication then we will show the loading spinner thus here below ; can type : "  if(true) return <LoadingSpinner />" to see how the loading spinner looks like there ; hence so thus here below.
+
+  // step543: see the next steps in Navbar.jsx file now there.
+  if(checkingAuth) return <LoadingSpinner />
+
   return (
     // step412: now lets give some classes to the below div , which makes the element take at least the full viewport height, apply a dark gray background, set all text to white, position it relative for child positioning, and hide any overflowing content ; we have made this parent RELATIVE , so that the children below with ABSOLUTE class can be positioned w.r.t to these here below.
     <div className='min-h-screen bg-gray-900 text-white relative overflow-hidden'> 
@@ -40,11 +62,23 @@ function App() {
               <Route path='/' element={<HomePage />} />
 
               {/* step410: lets create some more routes here below */}
-              <Route path='/signup' element={<SignUpPage />} />
-              <Route path='/login' element={<LoginPage />} />
+
+              {/* step528: same as login route below , do for signup route too thus here below. */}
+
+              {/* step529: see the next steps in useUserStore.js file now there */}
+
+              {/* <Route path='/signup' element={<SignUpPage />} /> */}
+              <Route path='/signup' element={!user ? <SignUpPage /> : <Navigate to="/" />} />
+
+              {/* step527: now if user has signed up or logged in ; the user state must be not null as per the zustand store code we had where we set the user state from null to non-null value upon signup or login ; so here below , if user is not null on LoginPage then navigate user to the homepage i.e. once user has logged in navigate user to homepage. */}
+              {/* <Route path='/login' element={<LoginPage />} /> */}
+              <Route path='/login' element={!user ? <LoginPage /> : <Navigate to="/" />} />
 
           </Routes>
       </div>
+
+      {/* to use toasts we need to put <Toaster /> at end in the App.jsx file below <Routes /> here below. */}
+      <Toaster />
     </div>
   )
 }
