@@ -2,4 +2,6 @@ Now lets try to implement what we did login and logout and all ; and once we log
 
 And once we logout, it will be gone from the upstash.com redis database too from there too.
 
+Now save some images for Homepage.jsx file in "public" folder now.
+
 See the next steps in the HomePage.jsx file now there.
