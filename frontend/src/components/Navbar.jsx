@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
 
   // step427: for now lets hardcode it as user is true , will later take it from backend APIs.
-  const user = true;
+  const user = false;
 
   // step431: now lets hardcode for now if user is admin , will later take it from backend APIs.
-  const isAdmin = true
+  const isAdmin = false;
 
   return (
     // step421: lets first have a class for the navbar here below in header.
