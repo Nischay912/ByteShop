@@ -4,14 +4,21 @@ import { ShoppingCart, UserPlus, LogIn, LogOut, Lock } from 'lucide-react'
 
 // step420: lets import Link now which will be used to create links to other pages ; its a substitute of anchor tag and is better because it navigates us to different pages without reloading the page.
 import { Link } from 'react-router-dom'
+import { useUserStore } from '../stores/useUserStore'
 
 const Navbar = () => {
 
   // step427: for now lets hardcode it as user is true , will later take it from backend APIs.
-  const user = false;
+  // const user = false;
 
+  // step544: now instead of getting user like this here above ; we will be getting it from the useUserStore zustand store now, thus here below.
+  const {user, logOut} = useUserStore();
+  
   // step431: now lets hardcode for now if user is admin , will later take it from backend APIs.
-  const isAdmin = false;
+  // const isAdmin = false;
+
+  // step545: to check if admin or not ; lets check it from "role" of user object we got above in previous tep up there now ; instead of hardcoing it like done here above thus there.
+  const isAdmin = user?.role === "admin";
 
   return (
     // step421: lets first have a class for the navbar here below in header.
@@ -64,11 +71,19 @@ const Navbar = () => {
             )}
 
             {/* step434: now if the user is logged in, then show the logout button here below ; else show the login and signup buttons here below. */}
+
+            {/* step546: now on clicking this logout button , we will be calling the logout function coming from the useUserStore zustand store thus here below. */}
+
+            {/* step547: see the next steps now in useUserStore.jsx file now there. */}
             {user ? (
-              <button className='bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-md flex items-center transition duration-300 ease-in-out'>
-                {/* step435: now lets have a logout button and a text here below in this button */}
-                <LogOut size={18} />
-                <span className='hidden sm:inline ml-2'>Log Out</span>
+              <button className='bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-md flex items-center transition duration-300 ease-in-out'
+              
+              onClick={logOut}
+
+              >
+              {/* step435: now lets have a logout button and a text here below in this button */}
+              <LogOut size={18} />
+              <span className='hidden sm:inline ml-2'>Log Out</span>
 
               </button>
             ) : (

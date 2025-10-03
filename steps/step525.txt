@@ -1,0 +1,5 @@
+Now we can test the LoginPage functionality there and there after doing login : if we see the : inspect > application > cookies > we can see the access and refresh token for the logged in user there , along with their expiration times thus there too.
+
+Now in inspect > network > cancel all using dnd button in top left > login again > see preview section > we can see password > but its only because we are in http and not https > if its https , no one can see it > in http : we ourselves only can see it on our own computer there ; others can't : SO ITS NOT SECURITY BREACH : DON'T WORRY!
+
+See the next steps in App.jsx file now there.

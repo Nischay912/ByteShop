@@ -4,7 +4,7 @@ import { useState } from 'react'
 import {motion} from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {LogIn, Mail, Lock, ArrowRight, Loader} from 'lucide-react'
-import { set } from 'mongoose'
+import { useUserStore } from '../stores/useUserStore.js'
 
 const LoginPage = () => {
   // step476: now lets get the states to be used here below.
@@ -12,12 +12,26 @@ const LoginPage = () => {
   const [password, setPassword] = useState('')
 
   // step477: for now lets hardcode the loading state to false, will later take it from backend APIs.
-  const loading = false
+
+  // step519: now lets comment out the below line and get the loading state from useUserStore.js file thus here below.
+  // const loading = false
+
+  // step512: lets now get the login function from useUserStore.js file here below.
+
+  // step520: so we get the loading state from useUserStore.js file thus here below to get to know when to show the loader spinner there or not , hence so thus here below.
+
+  // step521: see the next steps in SignUpPage.jsx file now there.
+  const {login , loading} = useUserStore()
 
   // step478: again have handleSubmit like we had in SignUpPage.jsx here below.
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(email, password) //for debugging
+    // console.log(email, password) //for debugging
+
+    // step513: now lets call the login function from useUserStore here below.
+
+    // step514: see the next steps in useUserStore.js file now there.
+    login(email, password)
   }
   return (
     // step479: now copy paste the email and password form from SignUpPage.jsx here below ; change some things rest all copy pasted from signup page thus here below.

@@ -1,0 +1,15 @@
+We can have CORS (Cross-Origin Resource Sharing) error now as our frontend and backend are on different ports ; Browsers enforce the same-origin policy, which blocks requests from one origin to another unless explicitly allowed.
+
+To fix this , we can go in vite.config.js file > put there : 
+
+    server:{
+        proxy:{
+            "/api": {
+                target: "http://localhost:5000",
+            }
+        }
+    }
+
+By doing this : Any request from your frontend like fetch('/api/products') will be forwarded to http://localhost:5000/api/products and so on..... ; and now : No CORS errors will occur because the browser thinks it’s calling the same origin.
+
+See the next steps in step511.txt file now there.
