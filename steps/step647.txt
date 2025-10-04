@@ -1,0 +1,5 @@
+Now we can go on cloudinary.com > assets > media > to see the image is being uploaded there or not.
+
+Go in admin dashboard > submit for a product there > now you can see the product got added in database and image also now will be visible on cloudinary platform there now.
+
+See the next steps in useProductStore.js file now there.

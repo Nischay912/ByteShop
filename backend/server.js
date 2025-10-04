@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5000;
 // step46: to use the body of the request , we will use the express.json middleware here below, so that : we can access the body of the request there using "req.body".
 
 // step47: see the next steps now in auth.controller.js file now there.
-app.use(express.json());
+app.use(express.json({limit: "10mb"})); // we set the payload allowed for images uploading to 10 megabytes here in this way.
 
 // step68: so we need to use the cookie parser package , so that we can access the contents of cookies in the form of req.cookies there.
 
