@@ -8,6 +8,7 @@ import { useUserStore } from './stores/useUserStore.js'
 import { useEffect } from 'react'
 import LoadingSpinner from './components/LoadingSpinner.jsx'
 import AdminPage from './pages/AdminPage'
+import CategoryPage from './pages/CategoryPage'
 
 function App() {
 
@@ -83,6 +84,11 @@ function App() {
 
               {/* step569: see the next steps in AdminPage.jsx file now there. */}
               <Route path='/secret-dashboard' element={user?.role === "admin" ? <AdminPage /> : <Navigate to="/login" />} />
+
+              {/* step700: now lets create a route for the category route that will show to corresponding products present of a particular category there, here below ; it will be like /category/glasses OR /category/sunglasses and so on ... thats why we have :category in the route parameter which is passed along with the / in the endpoint there , like : GET request to /api/products/category/123 → req.params.category will be "123" and so on..... */}
+
+              {/* step701: see the next steps in useProductStore.js file now there */}
+              <Route path='/category/:category' element={ <CategoryPage /> } />
 
           </Routes>
       </div>

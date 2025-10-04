@@ -133,4 +133,24 @@ export const useProductStore = create((set,get) =>({
             toast.error(error?.response?.data?.error || "Something went wrong")
         }
     },
+
+    // step702: lets now create a function to fetch the products by category here now below.
+    fetchProductsByCategory: async(category) => {
+        // step703: when we are loading the producst , lets make laoding true here below.
+        set({loading: true})
+        
+        // step704: now send a request to the endpoint to get the category using the category name recieved in input parameter and rest all toast and setting back loading back to false has same logic like done in the functions above here now.
+        try{
+            const res = await axiosInstance.get(`/products/category/${category}`)
+
+            // step705: now we will set the products state with the data of products we get in response from the backend server thus here below i.e. we will be getting all the products of that category ; but also set loading to false as fetching done for now here below ; we have "res.data.products" that we are doing here below ; its because the backend will be sending in response : res.send({products}) and not res.send(products) i.e. if backend is sending an object , we access using "." here below.
+
+            // step706: see the next steps in CategoryPage.jsx file now there.
+            set({products: res.data.products , loading: false})
+        }
+        catch(error){
+            set({error:"Something went wrong" , loading: false})
+            toast.error(error?.response?.data?.error || "Something went wrong")
+        }
+    },
 }))
