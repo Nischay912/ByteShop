@@ -41,6 +41,7 @@ const ProductCard = ({product}) => {
                 </p>
             </div>
             <button
+            // in the below classes : focus:outline-none focus:ring-4 focus:ring-cyan-300 removes the default focus outline (outline-none) and instead adds a 4px thick cyan ring around the element when it is focused, improving accessibility with a custom visual indicator.
                 className='flex items-center justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-300'
                 onClick={handelAddCart}
             >
