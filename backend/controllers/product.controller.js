@@ -174,7 +174,7 @@ export const getProductsByCategory = async (req,res) =>{
         // step183: we can get the response back as all the products of that category here below.
 
         // step184: see the next steps in product.route.js file now there.
-        res.status(200).json(products);
+        res.status(200).json({products});
     }
     catch(error){
         console.log("Error getting products by category : " , error.message);

@@ -9,7 +9,7 @@ import CategoryItem from '../components/CategoryItem.jsx';
 // step556: since images are in publci folder , so use "/" before the image name there.
 const categories = [
   { href: "/jeans", name: "Jeans", imageUrl: "/jeans.jpg" },
-  { href: "/tshirts", name: "T-shirts", imageUrl: "/tshirts.jpg" },
+  { href: "/t-shirts", name: "T-shirts", imageUrl: "/tshirts.jpg" },
   { href: "/watches", name: "Watches", imageUrl: "/watches.jpg" },
   { href: "/jackets", name: "Jackets", imageUrl: "/jackets.jpg" },
   { href: "/shoes", name: "Shoes", imageUrl: "/shoes.jpg" },
