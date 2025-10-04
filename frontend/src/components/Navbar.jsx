@@ -63,7 +63,7 @@ const Navbar = () => {
 
             {/* step432: now if the user is admin, then only show the admin dashboard button here below. */}
             {isAdmin && (
-              <Link className='bg-cyan-700 hover:bg-cyan-600 text-white px-3 py-1 rounded-md font-medium transition duration-300 ease-in-out flex items-center' to={"/admin"}>
+              <Link className='bg-cyan-700 hover:bg-cyan-600 text-white px-3 py-1 rounded-md font-medium transition duration-300 ease-in-out flex items-center' to={"/secret-dashboard"}>
                 {/* step433: we will have a lock icon here with the Dashboard written next to it here below ; inline-block mr-1 makes the element behave like an inline element but still accept width/height (inline-block) and adds a right margin of 0.25rem (mr-1) to create spacing from the next element. */}
                 <Lock className='inline-block mr-1' size={18} />
                 <span className='hidden sm:inline'>Dashboard</span>

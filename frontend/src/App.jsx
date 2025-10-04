@@ -7,6 +7,7 @@ import { Toaster } from 'react-hot-toast'
 import { useUserStore } from './stores/useUserStore.js'
 import { useEffect } from 'react'
 import LoadingSpinner from './components/LoadingSpinner.jsx'
+import AdminPage from './pages/AdminPage'
 
 function App() {
 
@@ -73,6 +74,15 @@ function App() {
               {/* step527: now if user has signed up or logged in ; the user state must be not null as per the zustand store code we had where we set the user state from null to non-null value upon signup or login ; so here below , if user is not null on LoginPage then navigate user to the homepage i.e. once user has logged in navigate user to homepage. */}
               {/* <Route path='/login' element={<LoginPage />} /> */}
               <Route path='/login' element={!user ? <LoginPage /> : <Navigate to="/" />} />
+
+              {/* step566: now lets create a route for the admin dashboard here below ; so check if user is admin or not thus here below , then only show the admin dashboard thus here below ; else : navigate user to login page thus here below. */}
+
+              {/* step567: we use ?. so that if user is null then user?.role will be undefined thus here below; so put user?.role === "admin" so that it doesn't crash the app if user is null , but just don't show the admin dashboard there. */}
+
+              {/* step568: we have made this to take to /login else , because if a user is logged in , even if he tries to visit /login , they will be redirected to homepage anyways ; but if a user is not logged in , they will be redirected to /login page thus here below ; else if we dont do that , they may get a 404 error if they try to visit the /secret-dashboard route thus here below. */}
+
+              {/* step569: see the next steps in AdminPage.jsx file now there. */}
+              <Route path='/secret-dashboard' element={user?.role === "admin" ? <AdminPage /> : <Navigate to="/login" />} />
 
           </Routes>
       </div>

@@ -1,0 +1,5 @@
+Now we can go on website > click on star to feature a product and see the database refreshed if there > will now show the isFeatured property as "true" there now ; after that we can even see redis ; where we had made earlier in backend to save the featured products for quick access in homepage later.
+
+So, on redis also if we feature a product , we can see its object on redis there too now.
+
+See the next steps in useProductStore.js file now there.
