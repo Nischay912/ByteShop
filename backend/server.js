@@ -7,6 +7,7 @@ import couponRoutes from "./routes/coupon.route.js"
 import paymentRoutes from "./routes/payment.route.js"
 import analyticsRoutes from "./routes/analytics.route.js"
 import cookieParser from "cookie-parser";
+import path from "path";
 
 // step4: import the dotenv package and then call its config method in order to be able to use the variables of the .env file there.
 import dotenv from "dotenv";
@@ -16,6 +17,8 @@ dotenv.config();
 const app = express();
 // step3: lets make a variable for PORT , so that we don't hardcode it in code there ; and just in case its undefined lets say it will be 5000
 const PORT = process.env.PORT || 5000;
+
+const __dirname = path.resolve();
 
 // step46: to use the body of the request , we will use the express.json middleware here below, so that : we can access the body of the request there using "req.body".
 
@@ -52,6 +55,15 @@ app.use("/api/payments", paymentRoutes)
 
 // step346: see the next steps in analytics.route.js file now there.
 app.use("/api/analytics", analyticsRoutes)
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+    });
+
+}
 
 app.listen(PORT, () => {
     console.log("server is running on http://localhost:" + PORT);
