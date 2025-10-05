@@ -1,0 +1,43 @@
+Now go on render.com > login using GitHub and get ready for deployment now.
+
+In package.json present in outermost ; we add under the scripts there -
+
+We will have render to fetch the repo from github ; so obviously we never push node modules there ; so make it to install them using npm insatll command using the package.json we push on github.
+
+But we also need to do it for frontend so we also need to do npm install there ; so for that we do npm install in frontend folder there using the command : "npm install --prefix frontend"
+
+And then build the frontend using : "npm run build --prefix frontend" ; so that we get the build files of frontend there ; to get the optimized version of our react application there ; which "vite" handles as we have "build" : vite build in package.json of frontend there for it.
+
+So overall in the scripts there , we put -
+
+"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+
+Now, go in server.js file, import path there and then write there -
+
+const __dirname = path.resolve();
+
+; this will get the current directory of the server.js file there i.e. the root of our application there.
+
+And then after all the endpoints there ; we put a check there -
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(__dirname, "/frontend/dist")));
+}
+
+; this will make us to go into the frontend from the root stored in __dirname , and then : go in dist folder that got created by npm run build during production on render.com ; and then make it as static assets , which will be the optimized version of our react application there ; Static files are served fast because Express just reads the files from disk and sends them ; In production, the frontend is “built” into static assets, so the backend just needs to serve them—no compilation or hot reload ; This reduces server load and avoids unnecessary Node.js processes running frontend code.
+
+Now we also ensure there that whenever user visits anywhere other than the routes there ; show them this react application ; so inside the same "if" we write there -
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+});
+
+; so : if user visits any page "*" other than the above routes there ; show them the index.html of our react application , which will be inside the root , then inside the frontend folder there ; then inside the dist folder there ; and then inside the index.html file there ; because on production index.html gets created inside the "dist" folder there during the build process there in production using "npm run build" command there.
+
+path.resolve(...) → turns it into an absolute path, which res.sendFile requires.
+
+Example: path.resolve(__dirname, "frontend", "dist", "index.html") → /Users/nkk/projects/my-app/frontend/dist/index.html
+
+So: the overall meaning of this is that : “For every URL that isn’t an API, send the main index.html so the frontend app can handle routing.”
+
+See the next steps in deployment2.txt file now there.
