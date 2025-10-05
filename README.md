@@ -52,18 +52,6 @@ STRIPE_SECRET_KEY=your_stripe_secret_key
 CLIENT_URL=http://localhost:5173
 NODE_ENV=development
 
-## 📋 API Endpoints
-
-### POST /api/auth/register
-Creates a new user account.
-
-**Request Body:**
-```json
-{
-  "email": "user@example.com",
-  "password": "securepassword",
-  "fullName": "johndoe"
-}
 ```
 # API Documentation
 
