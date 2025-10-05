@@ -32,7 +32,11 @@ export const createCheckoutSession = async(req, res) => {
                         images: [product.image],
                     },
                     unit_amount: amount
-                }
+                },
+                // step877: now lets add quantity too in the line itmes here below ; so we save the product's quantity in the lineItems array of objects thus here below as STRIPE needs quantity too in its line item object and if its null due to some reason lets keep it as "1" by default thus here below.
+
+                // step878: see the next steps in step879.txt file now there.
+                quantity: product.quantity || 1,
             }
         });
 
@@ -142,8 +146,8 @@ async function createNewCoupon(userId){
         // step321: making the discount to be fixed to 10% here below.
         discountPercentage:10,
 
-        // step322: coupon will be expired after 30 days from now here below.
-        expirationDate: new Date(Date.now() + 30*24*60*60*1000),
+        // step322: coupon will be expired after 30 days from now here below ; put the name "expiryDate" same as you had used in "coupon.model.js" too there.
+        expiryDate: new Date(Date.now() + 30*24*60*60*1000),
 
         // step323: now the below line of code : Associates the coupon with the specific user who it was created for.
         userId: userId,
@@ -159,6 +163,17 @@ export const checkoutSuccess = async (req, res) => {
     try{
         // step330: so user will send us the session id from the frontend here , when they click on payment option and create a session there.
         const {sessionId} = req.body;
+
+
+        // Check if order already exists , to prevent duplicate orders.
+        const existingOrder = await Order.findOne({ stripeSessionId: sessionId });
+        if (existingOrder) {
+            return res.status(200).json({
+                success: true,
+                message: "Order already created.",
+                orderId: existingOrder._id,
+            });
+        }
 
         // step331: now lets use the same sessionId in stripe to retrieve that session from stripe here below.
         const session = await stripe.checkout.sessions.retrieve(sessionId);

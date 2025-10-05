@@ -1,0 +1,3 @@
+Go on stripe.com > login using .dev@gmail account > go in test mode > developers > now we will be using th epublishable key in te frontend as the secret key was for backend only that we had set up in the env variables earlier there ; so dont put the publishable key in the environment variables now there ; but will use them in one of the components directly there as its a publishable key , even if osmeone sees it , no problem.
+
+See the next steps in OrderSummary.jsx file now there.

@@ -11,6 +11,8 @@ import AdminPage from './pages/AdminPage'
 import CategoryPage from './pages/CategoryPage'
 import { useCartStore } from './stores/useCartStore'
 import CartPage from './pages/CartPage'
+import PurchaseSuccessPage from './pages/PurchaseSuccessPage.jsx'
+import PurchaseCancelPage from './pages/PurchaseCancelPage.jsx'
 
 function App() {
 
@@ -106,6 +108,14 @@ function App() {
 
               {/* step776: see the next steps in CartPage.jsx file now there */}
               <Route path='/cart' element={ user ? <CartPage /> : <Navigate to="/login" />} />
+
+              {/* step885: now lets create routes for purchase-success page here beow ; if user is not logged in , navigate user to login page thus here below */}
+
+              {/* step886: see the next steps in PurchaseSuccessPage.jsx file now there */}
+              <Route path='/purchase-success' element={ user ? <PurchaseSuccessPage /> : <Navigate to="/login" />} />
+
+              {/* step916: now lets make the purchase cancel route here below. */}
+              <Route path='/purchase-cancel' element={ user ? <PurchaseCancelPage /> : <Navigate to="/login" />} />
 
           </Routes>
       </div>

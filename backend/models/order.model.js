@@ -35,7 +35,7 @@ const OrderSchema = new mongoose.Schema({
         min: 0,
     },
     // step277: then we will also be having a check property too for the STRIPE which we will be using for payments ; once we use this in further steps ahead this will be used there.
-    stripSessionId: {
+    stripeSessionId: {
         type: String,
         unique: true,
     },

@@ -3,10 +3,16 @@ import {motion} from 'framer-motion'
 import { useCartStore } from '../stores/useCartStore'
 import { MoveRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+// step865: lets import the stripe package we installed for frontend earlier here below.
+import {loadStripe} from '@stripe/stripe-js'
+import axiosInstance from '../lib/axios';
+
+// step866: lets now create the stripe promise with the publishable key in it here below ; in order to handle the payments through stripe here below.
+const stripePromise = loadStripe("pk_test_51SCnaMA1UZXPBCNuyShgtdWqrJ1BdvrIgdZUD3bsCsupDGPpHbRpQAtmGnMmiWPvh6CaoV39CVIPl6UAuDwgVhJ100yOHmYLlv")
 
 const OrderSummary = () => {
     // step825: now lets get some states and functions from the cart store here below.
-    const {total, subtotal, coupon, isCouponApplied} = useCartStore();
+    const {total, subtotal, coupon, isCouponApplied, cart} = useCartStore();
 
     // step826: by simple maths ; savings will be the difference between subtotal and total thus here below.
     const savings = subtotal - total
@@ -17,6 +23,39 @@ const OrderSummary = () => {
     // step828: lets show the total and savings also in same format thus here below.
     const formattedTotal = total.toFixed(2);
     const formattedSavings = savings.toFixed(2);
+
+    // step868: now lets create the handlePayment function here below.
+    const handlePayment = async () => {
+        // step869: lets get the stripe instance using the stripe promise we created earlier ; thus here below.
+        const stripe = await stripePromise;
+        // step870: now lets send a request to backend endpoint for creating a checkout session thus here below.
+
+        // step871: we also wanted the products and the coupon in request for that endpoint there so lets send it also to that endpoint here below.
+
+        // step872: so if we have a coupon ; we send it with the request thus here below ; else we will send null here below ; and the products to do payment with are in the cart , so send the cart items in the product here below ; REMEMBER : we should have the same name "products" and "coupon" that we had used in the backend endpoint too thus here below.
+        const res = await axiosInstance.post("/payments/create-checkout-session" , {products: cart, coupon: coupon ? coupon.code : null});
+
+        // step873: now lets extract the session id from the response we get thus here below ; since in backend we were returning just the id , so just get the whole data from the response thus here below.
+        const session = res.data
+
+        // step874: lets do a console log to check if we getting correct response or not thus here below.
+
+        // step875: see the next steps in step876.txt file now there.
+        // console.log("session is here", session);
+
+        // step880: now lets get the result back from a function called redirectToCheckout from stripe thus here below.
+        const result = await stripe.redirectToCheckout({
+            // step881: it takes the session id we got from backend here below now ; we saw the session id was named as "id" in the object named session in console log above ; so extract using "." hence so thus here below.
+            sessionId: session.id
+        })
+
+        // step882: if there is some error , we can show it here below.
+
+        // step883: see the next steps in step884.txt file now there.
+        if(result.error){
+            console.error("Error:" , result.error)
+        }
+    }
 
     return (
         // step823: lets have a motion div here to show its components be rendered there on refreshing the page in some animation thus here below.
@@ -68,6 +107,8 @@ const OrderSummary = () => {
                     // step835: added some scales to be there on hover and on tap thus here below.
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    // step867: now on clicking this button lets call a function here below.
+                    onClick={handlePayment}
                 >
                     Proceed to checkout
                 </motion.button>
