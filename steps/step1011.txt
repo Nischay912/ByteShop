@@ -1,0 +1,5 @@
+Now we will use Axios Interceptors to refresh access tokens after every 15m because we know they expire every 15m ; but we don't want the user to get logout automatically every 15m ; so lets handle it now using the axios Interceptors.
+
+We will use the refresh token of the user and try to create a new access token every 15m to prevent access token to get expired and user remains logged in even after 15m.
+
+See the next steps in useUserStore.js file now there.

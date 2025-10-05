@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ChevronLeft, ChevronRight, ShoppingCart } from 'lucide-react';
 import { useCartStore } from '../stores/useCartStore';
+import {toast} from 'react-hot-toast'
+import { useUserStore } from '../stores/useUserStore';
 
 // step983: it was taking featuredProducts as a prop , so lets grab it here below.
 
@@ -11,6 +13,8 @@ const FeaturedProducts = ({featuredProducts}) => {
     const [itemsPerPage, setItemsPerPage] = useState(4);
 
     const {addToCart} = useCartStore();
+
+    const {user} = useUserStore();
 
     // step985: lets have a function below to responsively handle the resize of screen when user clicks onleft or right in the slider , here below in a useEffect here below.
     useEffect(() => {
@@ -99,7 +103,14 @@ const FeaturedProducts = ({featuredProducts}) => {
 												₹{product.price.toFixed(2)}
 											</p>
 											<button
-												onClick={() => addToCart(product)}
+												onClick={() => {
+                                                    if(!user) {
+                                                        // set a unique id of your own here to prevent user to spam the button and get multiple errors toast there.
+                                                        toast.error("Please login to add to cart", {id: "login-error-cart"})
+                                                        return;
+                                                    }
+                                                    addToCart(product)}
+                                                }
 
                                                 // step1005: Styles the “Add to Cart” button full width with emerald color, hover effect, white text, rounded edges, and centered content.
 												className='w-full bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-2 px-4 rounded transition-colors duration-300 
