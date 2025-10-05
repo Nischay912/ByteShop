@@ -1,1 +1,3 @@
-Now go on render.com > github login > click on new > 
+Now go on render.com > github login > click on new > web service > choose the repository > build command : npm run build > start command : npm run start > choose FREE > put the environment variables > add from env > copy-paste all env variables from vs code > keep NODE_ENV as development for now to run the backedn's server.js commands we had there added in deployment.txt file earlier told there > Develop service.
+
+Then we can do : go in environment > change : client_url : to the new url we got from render.com ; don't put / at the end
