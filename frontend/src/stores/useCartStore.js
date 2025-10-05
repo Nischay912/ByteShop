@@ -173,4 +173,45 @@ export const useCartStore = create((set,get) => ({
     clearCart: async () => {
         set({cart: [], coupon: null, total:0, subtotal:0})
     },
+
+    // step919: now lets create a function to get the coupons by sending a request to the backend here below.
+    getMyCoupon: async () => {
+        try{
+            const response = await axiosInstance.get('/coupons')
+            // step920: if coupons there then update the state with the response data thus here below.
+            set({coupon: response.data})
+        }
+        catch(error){
+            console.error("Error getting coupons : " , error.message);  
+            toast.error(error?.response?.data?.message || "Something went wrong in getting coupons")
+        }
+    },
+
+    // step921: now lets have a function to apply the coupon here below.
+    applyCoupon: async(code) => {
+        try{
+            const response = await axiosInstance.post('/coupons/validate', {code})
+
+            // step922: once we get the response from backend , we update the coupon state to it and set the isCouponApplied state to true thus here below.
+            set({coupon: response.data, isCouponApplied: true})
+
+            // step923: and since we are applying a coupon , it will affect the total amount of the cart thus here below ; so we will call the function to calculate the total amount of the cart here below.
+            get().calculateTotal()
+            toast.success("Coupon applied successfully")
+        }
+        catch(error){
+            console.error("Error applying coupon : " , error.message);  
+            toast.error(error?.response?.data?.message || "Something went wrong in applying coupon")
+        }
+    },
+
+    // step924: now lets have a function to remove coupon just in UI , not delete from backend , here below.
+    removeCoupon: () => {
+        set({coupon: null, isCouponApplied: false})
+        // step925: and since we are removing a coupon , it will affect the total amount of the cart thus here below ; so we will call the function to calculate the total amount of the cart here below.
+
+        // step926: see the next steps in GiftCouponCard.jsx file now there.
+        get().calculateTotal()
+        toast.success("Coupon removed successfully : refresh to apply again")
+    }
 }))

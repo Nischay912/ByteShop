@@ -33,7 +33,7 @@ const OrderSummary = () => {
         // step871: we also wanted the products and the coupon in request for that endpoint there so lets send it also to that endpoint here below.
 
         // step872: so if we have a coupon ; we send it with the request thus here below ; else we will send null here below ; and the products to do payment with are in the cart , so send the cart items in the product here below ; REMEMBER : we should have the same name "products" and "coupon" that we had used in the backend endpoint too thus here below.
-        const res = await axiosInstance.post("/payments/create-checkout-session" , {products: cart, coupon: coupon ? coupon.code : null});
+        const res = await axiosInstance.post("/payments/create-checkout-session" , {products: cart, couponCode: coupon ? coupon.code : null});
 
         // step873: now lets extract the session id from the response we get thus here below ; since in backend we were returning just the id , so just get the whole data from the response thus here below.
         const session = res.data
@@ -89,7 +89,7 @@ const OrderSummary = () => {
                     {coupon && isCouponApplied &&(
                         <dl className='flex items-center justify-between gap-4'>
                             <dt className='text-base font-normal text-gray-300'>Coupon ({coupon.code})</dt>
-                            <dd className='text-base font-medium text-cyan-400'>-{coupon.discountPercentage}</dd>
+                            <dd className='text-base font-medium text-cyan-400'>-{coupon.discountPercentage}%</dd>
                         </dl>
                     )}
 
