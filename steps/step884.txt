@@ -1,0 +1,9 @@
+Now we can click on proceed to checkout and see the payment page there : REMEMBER TO USE THE STRIPE VERSION USED IN PACKAGE.JSON OF BOTH FRONTEND AND BACKEND THUS HERE BELOW.
+
+Now, we can enter any email > car number for test mode is > 4242 4242 4242 4242 > then: we will have to enter any non expired date > in cvv enter : 424 : name enter any > proceed.
+
+It takes us to a page where obviously since we had in backend route there ; takes us to a page of "purchase-success" with session_id provided by STRIPE itself ; if we during payemnt click on back button it will take us to "purchase-cancel" page like we had set up in backend earlier there too.
+
+If you make purchase of >200 : it will create 10% discount automatically coupon in the database under "coupons" collection there ; as per the code we wrote in the forntend and backend earlier there.
+
+See the next steps in App.jsx file now there.

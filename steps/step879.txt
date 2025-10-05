@@ -1,0 +1,5 @@
+Now we see that we if add items < 200 ; we are able to see the session id in the console there ; since we did console log earlier ther e; its because if we add > 200 items in cart ; the backend creates some coupon and all , but we haven't handled coupon yet ; so keep total cart price < 200 and click checkout button to see the session id there.
+
+Now like talked in backend earlier ; the checkout page will come using this session id only there ; so by using this ID , stripe creates the payment page for us there.
+
+See the next steps in OrderSummary.jsx file now there.

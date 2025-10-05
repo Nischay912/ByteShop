@@ -1,0 +1,9 @@
+Now if we go on the page and click proceed to checkout > we will see in console : error ; if we go in inspect > network > clear all using the dnd button on top left > click the checkout button again > clcik on the thing that comes in red there > preview > we see that - 
+
+{
+    "message": "Something went wrong in creating checkout session : Quantity is required. Add `quantity` to `line_items[0]`"
+}
+
+So, we need to add "quantity" in the backend there now.
+
+See the next steps in payment.controller.js file of backend now there.

@@ -166,5 +166,11 @@ export const useCartStore = create((set,get) => ({
         catch(error){
             toast.error(error?.response?.data?.error || "Something went wrong in updating quantity")
         }
-    }
+    },
+    // step908: lets now create the "clearCart" function here below ; where we set everything to 0 and null here below.
+
+    // step909: see the next steps in PurchaseSuccessPage.jsx file now there.
+    clearCart: async () => {
+        set({cart: [], coupon: null, total:0, subtotal:0})
+    },
 }))

@@ -20,7 +20,7 @@
     "ioredis": "^5.8.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.3",
-    "stripe": "^18.5.0"
+    "stripe": "^16.8.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
