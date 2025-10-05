@@ -1,0 +1,3 @@
+Now in the payment.controller.js file : we are accepting "couponCode" as well in req.body ; but in OrderSummary.jsx file , we are sending only the "coupon" there ; so rename it to "couponCode" there as well ; for discounts to be applied on the payment page as well there.
+
+See the next steps in AnalyticsTab.jsx file now there

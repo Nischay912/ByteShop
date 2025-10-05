@@ -137,6 +137,11 @@ async function createStripeCoupon(discountPercentage){
 // step318: now lets create a function to create a coupon collection in the database here below ; where : it takes userId as an argument → the coupon will be linked to a specific user.
 async function createNewCoupon(userId){
 
+    // step938: so we delete the other coupons for user if one is already there here below.
+
+    // step939: see the next steps in step940.txt file now there.
+    await Coupon.findOneAndDelete({userId : userId});
+
     // step319: using the Coupon model of mongoose here below to create a new document for the database here below.
     const newCoupon = new Coupon({
 

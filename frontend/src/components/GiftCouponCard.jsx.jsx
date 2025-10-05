@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // step851: lets import the needed packages and icons from lucide-react here below.
 import {motion} from 'framer-motion'
 import { useCartStore } from '../stores/useCartStore'
@@ -8,14 +8,39 @@ const GiftCouponCard = () => {
     
     // step856: now lets have the states and functions to be used here below.
     const [userInputCode, setUserInputCode] = useState('')
-    const {coupon, isCouponApplied} = useCartStore();
+    const {coupon, isCouponApplied, applyCoupon, getMyCoupon, removeCoupon} = useCartStore();
+
+    // step927: now as soon as the page loads , we will use the useEffect to show all the coupons there , hence so thus here below.
+    useEffect(() => {
+        getMyCoupon()
+    },[getMyCoupon])
+
+    // step928: also if user has a coupon, put it in the input there directly i.e. update the value fo the input tag immediately by that coupon code thus here below.
+    useEffect(() => {
+        if(coupon){
+            // step929: so if user has input , set the input tag's value to be the coupon code thus here below.
+
+            // step930: now we can see the coupon there if its there for the user in the database.
+            setUserInputCode(coupon.code)
+        }
+    },[coupon])
     
     const handleApplyCoupon = () => {
-        toast.success("Coupon applied successfully")
+        // step931: now when we click on the apply coupon button, we will call the function to apply the coupon here below.
+
+        // step932: but for that also check if the input box for coupon should not be empty thus here below.
+        if(!userInputCode) return;
+
+        applyCoupon(userInputCode);
     }
 
-    const handleRemoveCoupon = () => {
-        toast.success("Coupon removed successfully")
+    const handleRemoveCoupon = async () => {
+        // step933: same done for removing coupon too , hence so thus here below.
+        await removeCoupon();
+        // step934: once removed , update the input tag to be empty thus here below.
+
+        // step935: see the next steps in step936.txt file now there.
+        setUserInputCode('');
     }
     
     return (
@@ -61,7 +86,7 @@ const GiftCouponCard = () => {
         </div>
 
         {/* step858: if we have a coupon present and it is applied , we will show it here below. */}
-        {isCouponApplied && coupon (
+        {isCouponApplied && coupon && (
             <div className="mt-4">
                 <h3 className='text-lg font-medium text-gray-300'>
                     Applied Coupon

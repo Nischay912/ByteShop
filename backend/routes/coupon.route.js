@@ -13,6 +13,6 @@ router.get("/", protectRoute, getCoupon)
 // step263: now lets create a route to validate if a coupon is valid or not here below.
 
 // step264: see the next steps in coupon.controller.js file now there.
-router.get("/validate" , protectRoute, validateCoupon)
+router.post("/validate" , protectRoute, validateCoupon)
 
 export default router

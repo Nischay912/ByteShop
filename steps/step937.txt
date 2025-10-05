@@ -1,0 +1,3 @@
+Now we can see that copou=n can be applied and removed on the cart page there ; but if we click on procedd to checkout now , it will show error ; because : in coupon.model.js : we have set that we will have only 1 coupon at a time for a user ; they cannot have 2 at same time ; even if that coupon is not active.
+
+SO, in payment.controller.js of backend : when we try to create a new coupon , we should delete the previous ones for that user ; so see the next steps there in payment.controller.js file now there in BACKEND folder there now.
