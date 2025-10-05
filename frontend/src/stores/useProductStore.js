@@ -36,8 +36,7 @@ export const useProductStore = create((set,get) =>({
             toast.success("Product added successfully")
         }
         catch(error){
-            const errMsg = error?.response?.data?.error || error.message || "Something went wrong";
-            toast.error(errMsg);
+            toast.error(error.response.data.error);
             // step642: adding product failed so now set back loading to false as now we are no longer adding the product here below.
             set({loading: false})
 
@@ -130,7 +129,7 @@ export const useProductStore = create((set,get) =>({
 
             // step690: see the next steps in step691.txt file now there.
             set({loading: false})
-            toast.error(error?.response?.data?.error || "Something went wrong")
+            toast.error(error?.response?.data?.error || "Something went wrong in toggling featured product")
         }
     },
 
@@ -149,8 +148,8 @@ export const useProductStore = create((set,get) =>({
             set({products: res.data.products , loading: false})
         }
         catch(error){
-            set({error:"Something went wrong" , loading: false})
-            toast.error(error?.response?.data?.error || "Something went wrong")
+            set({error:"Something went wrong in fetching products by category" , loading: false})
+            toast.error(error?.response?.data?.error || "Something went wrong in fetching products by category")
         }
     },
 }))

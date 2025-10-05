@@ -20,7 +20,7 @@ router.post("/", protectRoute, addToCart)
 router.get("/", protectRoute, getCartProducts)
 
 // step205: now lets also add routes to either remove all quantity at once from the cart OR delete the quantity one by one from the cart using + or - there.
-router.post("/", protectRoute, removeAllFromCart)
-router.post("/:id", protectRoute, updateQuantity)
+router.delete("/", protectRoute, removeAllFromCart)
+router.put("/:id", protectRoute, updateQuantity)
 
 export default router

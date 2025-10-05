@@ -9,11 +9,15 @@ import { useEffect } from 'react'
 import LoadingSpinner from './components/LoadingSpinner.jsx'
 import AdminPage from './pages/AdminPage'
 import CategoryPage from './pages/CategoryPage'
+import { useCartStore } from './stores/useCartStore'
+import CartPage from './pages/CartPage'
 
 function App() {
 
   // step526: lets get the user state from useUserStore.js file here below.
   const { user, checkAuth, checkingAuth } = useUserStore();
+
+  const {getCartItems} = useCartStore();
 
   // step536: now as soon as user visits the app OR refresh the page, we will run the checkAuth method thus here below , using useEffect hook.
 
@@ -21,8 +25,16 @@ function App() {
 
   // step538: see the next steps in LoadingSpinner.jsx file now there.
   useEffect(() => {
-    checkAuth();
-  },[checkAuth])
+    checkAuth(); 
+  },[checkAuth]);
+
+  // step771: as soon as the user logs in ; they should be able to see the number in cart icon of navbar there ; so lets have a useEffect here below.
+
+  // step772: now see the next steps in Navbar.jsx file now there.
+  useEffect(() => {
+    if(!user) return
+    getCartItems();
+  },[getCartItems, user]);
 
   // step542: if we are checking for user authentication then we will show the loading spinner thus here below ; can type : "  if(true) return <LoadingSpinner />" to see how the loading spinner looks like there ; hence so thus here below.
 
@@ -89,6 +101,11 @@ function App() {
 
               {/* step701: see the next steps in useProductStore.js file now there */}
               <Route path='/category/:category' element={ <CategoryPage /> } />
+
+              {/* step775: lets now have a route for the cart page here below ; but only logged in users can see it ; so if user is not logged in , navigate user to login page thus here below. */}
+
+              {/* step776: see the next steps in CartPage.jsx file now there */}
+              <Route path='/cart' element={ user ? <CartPage /> : <Navigate to="/login" />} />
 
           </Routes>
       </div>

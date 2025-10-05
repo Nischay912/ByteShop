@@ -1,0 +1,3 @@
+Now we can go on website and see that adding different products will update the navbar UI there , but adding the same quantity multiple times won't do so there ; it will update the quantity in backgorund but not show on UI there ; UI just shows number of items added not quantities ; quantities are added as much time you click on "add" , but can be seen in database only in the "users" collection there.
+
+See, the next steps in App.jsx file now there.

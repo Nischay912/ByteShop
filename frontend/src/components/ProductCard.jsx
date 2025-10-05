@@ -4,11 +4,16 @@ import React from 'react'
 import toast from 'react-hot-toast'
 import { ShoppingCart } from 'lucide-react'
 import { useUserStore } from '../stores/useUserStore'
+import { useCartStore } from '../stores/useCartStore'
 
 // step725: so the function takes the product passed as a prop where it was called , hence so thus here below.
 const ProductCard = ({product}) => {
     // step730: now lets get the current user from the useUserStore here below.
     const {user} = useUserStore();
+
+    // step767: now lets get the addToCart function from the useCartStore here below.
+    const {addToCart} = useCartStore();
+
     const handelAddCart = () => {
         // step731: now if user is not logged in , then we can show the below toast here below.
         if(!user){
@@ -19,7 +24,10 @@ const ProductCard = ({product}) => {
             return
         }
         else{
-            toast.success("Product added to cart successfully")
+            // step768: now lets call the addToCart function from the useCartStore here below.
+
+            // step769: see the next steps in step770.txt file now there.
+            addToCart(product);
         }
     }
   return (
