@@ -123,7 +123,7 @@ export const login = async (req,res) => {
             res.status(200).json({_id:user._id, name:user.name, email:user.email, role:user.role, message:"Logged in successfully"})
         }
         else{
-            res.status(401).json({message:"Invalid email or password"})
+            res.status(400).json({message:"Invalid email or password"})
         }
     } 
     catch (error) {
