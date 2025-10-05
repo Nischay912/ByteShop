@@ -1,5 +1,6 @@
 import Order from "../models/order.model.js";
 import User from "../models/user.model.js"
+import Product from "../models/product.model.js"
 
 // step351: now lets define the getAnalayticsData function here below.
 export const getAnalayticsData = async () => {
@@ -115,7 +116,7 @@ export const getDailySalesData = async (startDate, endDate) => {
                 date,
 
                 // step394: if foundData is null , doing .sales on it could crash the program , so put ?. there which will not proceed to the next line if foundData is null ; and also put || 0 so that sales will be 0 if foundData is null.
-                sales: foundData?.sales || 0, 
+                sales: foundData?.totalSales || 0, 
 
                 // step395: now lets get the revenue here below.
                 revenue: foundData?.totalRevenue || 0
