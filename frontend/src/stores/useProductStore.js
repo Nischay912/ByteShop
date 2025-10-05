@@ -152,4 +152,26 @@ export const useProductStore = create((set,get) =>({
             toast.error(error?.response?.data?.error || "Something went wrong in fetching products by category")
         }
     },
+
+    // step973: now lets make a function to fetch the featured products here below ; hence so thus here now below.
+    fetchFeaturedProducts: async() => {
+
+        // step974: when we are loading the products , lets make loading true here below.
+        set({loading: true})
+        try{
+
+            // step975: now lets send a request to the endpoint to get the featured products thus here below.
+            const res = await axiosInstance.get("/products/featured")
+
+            // step976: update the products state with the data of products we get in response from the backend server thus here below i.e. we will be getting all the featured products ; but also set loading to false as fetching done for now here below.
+            set({products: res.data , loading: false})
+        }
+        catch(error){
+            // step977: if fails , show this message and set loading to false again as fetching done for now here below.
+
+            // step978: see the next steps in HomePage.jsx file now there.
+            set({error:"Something went wrong in fetching featured products" , loading: false})
+            console.log("Error in fetching featured products" , error)
+        }
+    }
 }))

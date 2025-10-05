@@ -1,8 +1,10 @@
 // step408: get the boilerplate first by typing rafce there.
 
 // step409: see the next steps in App.jsx file now there.
-import React from 'react'
+import React, { useEffect } from 'react'
 import CategoryItem from '../components/CategoryItem.jsx';
+import { useProductStore } from '../stores/useProductStore';
+import FeaturedProducts from '../components/FeaturedProducts.jsx';
 
 // step555: lets have an array of categories that we will be showing on the homepage there now, here below ; where href refers to the link they will be navigated to when clicked on, here below.
 
@@ -19,8 +21,17 @@ const categories = [
 ];
 
 const HomePage = () => {
+
+  // step979: lets import the necessary states and functions from the useProductStore here below.
+  const { fetchFeaturedProducts, products, loading } = useProductStore();
+
+  // step980: now once the page is loaded we will call the fetchFeaturedProducts function to fetch the featured products thus here below.
+  useEffect(() => {
+    fetchFeaturedProducts();
+  }, [fetchFeaturedProducts]);
+
   return (
-    // step557: lets build the UI fir the homepage now here below.
+    // step557: lets build the UI for the homepage now here below.
     <div className='relative min-h-screen text-white overflow-hidden'>
       {/* step558: lets have another wrapper div to give maximum width to the content here below. */}
       <div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16'>
@@ -41,6 +52,11 @@ const HomePage = () => {
             />
           ))}
         </div>
+
+        {/* step981: now if we are not loading and we have some featured products then lets show them here below. */}
+
+        {/* step982: see the next steps in FeaturedProducts.jsx file now there. */}
+        {!loading && products.length > 0 && <FeaturedProducts featuredProducts = {products} />}
       </div>
     </div>
   )
