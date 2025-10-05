@@ -15,7 +15,7 @@ export const getAllProducts = async (req, res) => {
     } 
     catch (error) {
         console.log("Error getting all products : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in getting all products : " + error.message})
     }
 }
 
@@ -54,7 +54,7 @@ export const getFeaturedProducts = async (req, res) => {
     }
     catch (error) {
         console.log("Error getting featured products : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in getting featured products : " + error.message})
     }
 }
 
@@ -90,7 +90,7 @@ export const createProduct = async (req, res) => {
     } 
     catch (error) {
         console.log("Error creating product : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in creating product : " + error.message})
     }
 }
 
@@ -126,7 +126,7 @@ export const deleteProduct = async (req, res) => {
     }
     catch(error){
         console.log("Error deleting product : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in deleting product : " + error.message})
     }
 }
 
@@ -136,8 +136,8 @@ export const getRecommendedProducts = async (req, res) => {
         // step172: now lets try to fetch some products using aggregate pipeline here below.
         const products = await Product.aggregate([
             {
-                // step173: we Randomly selects 3 documents from the Product collection ; Ensures results are different on each execution.
-                $sample: {size: 3}
+                // step173: we Randomly selects 4 documents from the Product collection ; Ensures results are different on each execution ; so it will return 4 random products here below.
+                $sample: {size: 4}
             },
             {
                 // step174: now the below lines Controls which fields should be included in the result ; "1" means include it and all other fields should be excluded.
@@ -154,11 +154,11 @@ export const getRecommendedProducts = async (req, res) => {
         // step175: now lets return all the products in response back to the user as user is admin , so should get back all products in response.
 
         // step176: see the next steps in product.route.js file now there.
-        res.status(200).json({products})
+        res.status(200).json(products)
     }
     catch(error){
         console.log("Error getting recommended products : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in getting recommended products : " + error.message})
     }
 }
 
@@ -178,7 +178,7 @@ export const getProductsByCategory = async (req,res) =>{
     }
     catch(error){
         console.log("Error getting products by category : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in getting products by category : " + error.message})
     }
 }
 
@@ -211,7 +211,7 @@ export const toggleFeaturedProduct = async (req, res) => {
     }
     catch(error){
         console.log("Error toggling featured product : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in toggling featured product : " + error.message})
     }
 }
 

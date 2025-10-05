@@ -114,7 +114,7 @@ export const createCheckoutSession = async(req, res) => {
     }
     catch(error){
         console.log("Error creating checkout session : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in creating checkout session : " + error.message})
     }
 }
 
@@ -212,6 +212,6 @@ export const checkoutSuccess = async (req, res) => {
     }
     catch(error){
         console.log("Error in checkout-success route : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message});
+        res.status(500).json({message:"Something went wrong in checkout-success route : " + error.message});
     }
 }

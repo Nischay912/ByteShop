@@ -13,7 +13,7 @@ export const getCoupon = async (req, res) => {
     }
     catch(error){
         console.log("Error getting coupons : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in getting coupons : " + error.message})
     }
 }
 
@@ -51,6 +51,6 @@ export const validateCoupon = async (req, res) => {
     }
     catch(error){
         console.log("Error validating coupon : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in validating coupon : " + error.message})
     }
 }

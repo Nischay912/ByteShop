@@ -5,6 +5,7 @@ import { ShoppingCart, UserPlus, LogIn, LogOut, Lock } from 'lucide-react'
 // step420: lets import Link now which will be used to create links to other pages ; its a substitute of anchor tag and is better because it navigates us to different pages without reloading the page.
 import { Link } from 'react-router-dom'
 import { useUserStore } from '../stores/useUserStore'
+import { useCartStore } from '../stores/useCartStore'
 
 const Navbar = () => {
 
@@ -19,6 +20,8 @@ const Navbar = () => {
 
   // step545: to check if admin or not ; lets check it from "role" of user object we got above in previous tep up there now ; instead of hardcoing it like done here above thus there.
   const isAdmin = user?.role === "admin";
+
+  const {cart} = useCartStore();
 
   return (
     // step421: lets first have a class for the navbar here below in header.
@@ -55,9 +58,19 @@ const Navbar = () => {
                 <span className='hidden sm:inline'>Cart</span>
 
                 {/* step430: now when user adds items in the cart , we will be showing that number on top of cart too ; thats why we had the Link of cart as relative & now will have the number below plcaed absolute w.r.t to it here below. */}
-                <span className='absolute -top-2 -left-2 bg-cyan-500 text-white rounded-full px-2 py-0.5 text-xs group-hover:bg-cyan-400 transition duration-300 ease-in-out'>
-                  3
-                </span>
+
+                {/* step773: we now add a condition to render the span only if there are items in the cart here below. */}
+
+                {/* step774: see the next steps in App.jsx file now there. */}
+                {cart.length > 0 && <span className='absolute -top-2 -left-2 bg-cyan-500 text-white rounded-full px-2 py-0.5 text-xs group-hover:bg-cyan-400 transition duration-300 ease-in-out'>
+
+                  {/* step765: now lets make the value to be shown here below : not be a hardcoded value like "3" , but rather be the length of the cart state i.e. the number of items in the cart */}
+
+                  {/* step766: see the next steps in ProductCard.jsx file now there. */}
+                  
+                  {/* 3 */}
+                  {cart.length}
+                </span>}
               </Link>
             )}
 

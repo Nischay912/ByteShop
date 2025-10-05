@@ -14,7 +14,7 @@ export const getCartProducts = async(req,res) => {
         const cartItems = products.map(product => {
 
             // step240: we look for the cart item in req.user.cartItems , where the id of the product is equal to the id of the product we just got from the above find ; thus we get that item here below.
-            const item = req.user.cartItems.find(cartItem => cartItem.id === product._id);
+            const item = req.user.cartItems.find(cartItem => cartItem.id === product.id);
 
             // step241: we then update the quantity of the product here below with the quantity of the item we got from the above find ; so we use "..." spread operator to first list all current key-value pairs of properties of product as a new JSON object and then add the quantity key-value pair here below with the value as the quantity that user had for that item in its schema , thats why we had product's id in user schema there in cartitems property of UserSchema earlier there.
 
@@ -29,7 +29,7 @@ export const getCartProducts = async(req,res) => {
     }
     catch(error){
         console.log("Error getting cart products : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in getting cart products : " + error.message})
     }
 }
 
@@ -62,7 +62,7 @@ export const addToCart = async (req, res) => {
     }
     catch(error){
         console.log("Error adding to cart : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in adding to cart : " + error.message})
     }
 }
 
@@ -92,7 +92,7 @@ export const removeAllFromCart = async (req, res) => {
     }
     catch(error){
         console.log("Error removing from cart : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in removing from cart : " + error.message})
     }
 }
 
@@ -139,6 +139,6 @@ export const updateQuantity = async (req, res) => {
     }
     catch(error){
         console.log("Error updating quantity : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in updating quantity : " + error.message})
     }
 }

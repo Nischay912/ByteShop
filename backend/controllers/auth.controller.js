@@ -98,7 +98,7 @@ export const signup = async (req,res) => {
     }
     catch(error){
         console.log("Error in signup : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in signup : " + error.message})
     }
 }
 
@@ -128,7 +128,7 @@ export const login = async (req,res) => {
     } 
     catch (error) {
         console.log("Error logging in : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in login : " + error.message})
     }
 }
 
@@ -164,7 +164,7 @@ export const logout = async (req,res) => {
     } 
     catch (error) {
         console.log("Error logging out : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in logout : " + error.message})
     }
 }
 
@@ -208,7 +208,7 @@ export const refreshToken = async (req,res) => {
     } 
     catch (error) {
         console.log("Error refreshing access token : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in refreshing access token : " + error.message})
     }
 }
 
@@ -222,6 +222,6 @@ export const getProfile = async (req,res) => {
     }
     catch(error){
         console.log("Error getting profile : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in getting profile : " + error.message})
     }
 }

@@ -38,7 +38,7 @@ router.get("/", protectRoute, adminRoute, async(req,res) => {
     }
     catch(error){
         console.log("Error getting analytics : " , error.message);
-        res.status(500).json({message:"Something went wrong : " + error.message})
+        res.status(500).json({message:"Something went wrong in getting analytics : " + error.message})
     }
 })
 

@@ -45,7 +45,7 @@ export const useUserStore = create((set,get) => ({
             // step505: now we will show an error message coming from the backend to the user that he has not signed up successfully thus here below ; and if no message comes from backend show the || or thing written thus here below ; put ?. so that if there is no message then it will not throw an error there in order to prevent the app to crash there.
 
             // step506: see the next steps in SignUpPage.jsx file now there.
-            toast.error(error?.response?.data?.message || "Something went wrong")
+            toast.error(error?.response?.data?.message || "Something went wrong in signing up")
         }
     },
 
@@ -66,7 +66,7 @@ export const useUserStore = create((set,get) => ({
         }
         catch(error){
             set({loading: false})
-            toast.error(error?.response?.data?.message || "Something went wrong")
+            toast.error(error?.response?.data?.message || "Something went wrong in logging in")
         }
     },
 
@@ -84,6 +84,7 @@ export const useUserStore = create((set,get) => ({
             }
         }
         catch(error){
+            console.log(error?.message)
             // step534: now here we can say that user is not authenticated as we are returning from checkAuth method so it will not be checking anymore there ; so set its value to false using the "set" function thus here below.
 
             // step535: see the next steps in App.jsx file now there.
@@ -108,7 +109,7 @@ export const useUserStore = create((set,get) => ({
             // step552: if something error came , show as toast error thus here below ; use ?. so that if there is no message then it will not throw an error there in order to prevent the app to crash there.
 
             // step553: see the next steps in step554.txt file now there.
-            toast.error(error?.response?.data?.message || "Something went wrong")
+            toast.error(error?.response?.data?.message || "Something went wrong in logging out")
         }
     }
 }))
