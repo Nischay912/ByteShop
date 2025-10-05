@@ -4,13 +4,13 @@
   "description": "",
   "main": "backend/server.js",
   "scripts": {
-    "dev": "nodemon backend/server.js",
-    "start": "node backend/server.js",
-    "build": "npm install && npm install --prefix frontend && npx vite build --prefix frontend"
+    "dev":"nodemon backend/server.js",
+    "start":"node backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
-  "type": "module",
+  "type":"module",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.2",
